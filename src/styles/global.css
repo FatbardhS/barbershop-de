@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* Palette 1 — warm cream + brass. Change colors here only. */
+@theme {
+  --color-cream: #f6f1ea;
+  --color-sand: #ede5da;
+  --color-line: #ddd2c3;
+  --color-ink: #2b2622;
+  --color-muted: #6b625a;
+  --color-brass: #b08a4e;
+  --color-brass-dark: #8a6a3c;
+
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display uppercase tracking-tight;
+  }
+}
+
+@utility container-page {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-semibold transition-colors;
+}
+
+@utility btn-primary {
+  @apply btn bg-brass text-white hover:bg-brass-dark;
+}
+
+@utility btn-outline {
+  @apply btn border border-ink/20 text-ink hover:border-ink/50;
+}
+
+/* Striped box used until real photos are added */
+@utility photo-placeholder {
+  background-color: var(--color-sand);
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 14px,
+    rgb(43 38 34 / 0.05) 14px 28px
+  );
+}

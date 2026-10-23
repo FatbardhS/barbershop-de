@@ -1,0 +1,23 @@
+---
+import { services } from "../data/shop";
+---
+
+<section id="services" class="scroll-mt-16 border-b border-line bg-sand">
+  <div class="container-page py-16 md:py-20">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <h2 class="text-3xl font-bold sm:text-4xl">Services &amp; prices</h2>
+      <p class="text-sm text-muted">All services include a wash and styling.</p>
+    </div>
+    <ul class="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((service) => (
+        <li class="border-t border-line pt-4">
+          <div class="flex items-baseline justify-between gap-4">
+            <h3 class="text-lg font-semibold">{service.name}</h3>
+            <span class="font-display text-lg font-semibold text-brass-dark">{service.price}</span>
+          </div>
+          <p class="mt-1 text-sm text-muted">{service.description}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

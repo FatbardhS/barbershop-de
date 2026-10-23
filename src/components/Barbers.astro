@@ -1,0 +1,21 @@
+---
+import { barbers, shop } from "../data/shop";
+---
+
+<section id="barbers" class="scroll-mt-16 border-b border-line">
+  <div class="container-page py-16 md:py-20">
+    <h2 class="text-3xl font-bold sm:text-4xl">Meet the barbers</h2>
+    <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {barbers.map((barber) => (
+        <li>
+          <div class="photo-placeholder aspect-[4/3] rounded-lg"></div>
+          <h3 class="mt-4 text-xl font-semibold">{barber.name}</h3>
+          <p class="text-sm text-muted">{barber.role}</p>
+          <a href={shop.bookingUrl} class="mt-2 inline-block text-sm font-semibold text-brass-dark hover:text-ink">
+            Book with {barber.name} →
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+---
+import { gallery, shop } from "../data/shop";
+---
+
+<section id="gallery" class="scroll-mt-16 border-b border-line bg-sand">
+  <div class="container-page py-16 md:py-20">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <h2 class="text-3xl font-bold sm:text-4xl">Recent work</h2>
+      <a href={shop.instagram} class="text-sm font-semibold text-brass-dark hover:text-ink">Follow on Instagram →</a>
+    </div>
+    <ul class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+      {gallery.map((label) => (
+        <li class="photo-placeholder flex aspect-square items-end rounded-md p-3" style="background-color: var(--color-cream)">
+          <span class="text-[11px] uppercase tracking-widest text-muted">{label}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
