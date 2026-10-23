@@ -365,6 +365,8 @@ const anyBarber = "Egal";
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({ _template: "table", _honey: value("_honey"), ...fields }),
+        // Keep sending even if the visitor closes the page right after booking
+        keepalive: true,
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok || String(result.success) !== "true") throw new Error(result.message);
@@ -432,18 +434,22 @@ const anyBarber = "Egal";
       }
 
       const summaryLine = `${value("service")} bei ${barber === "Egal" ? "beliebigem Barbier" : barber} · ${dateShort.format(fromIso(iso))}, ${time} Uhr`;
-      try {
-        await sendEmail({
-          _subject: `${storesBookings ? "Neuer Termin" : "Neue Terminanfrage"}: ${name}, ${date}, ${time} Uhr`,
-          Name: name,
-          Telefon: phone,
-          Datum: date,
-          Uhrzeit: `${time} Uhr`,
-        });
-      } catch (error) {
-        console.warn("E-Mail an den Shop fehlgeschlagen:", error);
-        // The slot is already saved, so the booking still counts
-        if (!storesBookings) {
+      const email = sendEmail({
+        _subject: `${storesBookings ? "Neuer Termin" : "Neue Terminanfrage"}: ${name}, ${date}, ${time} Uhr`,
+        Name: name,
+        Telefon: phone,
+        Datum: date,
+        Uhrzeit: `${time} Uhr`,
+      });
+
+      if (storesBookings) {
+        // The slot is already saved, so confirm right away; FormSubmit can take 20 seconds to answer
+        email.catch((error) => console.warn("E-Mail an den Shop fehlgeschlagen:", error));
+      } else {
+        try {
+          await email;
+        } catch (error) {
+          console.warn("E-Mail an den Shop fehlgeschlagen:", error);
           submitButton.disabled = false;
           submitButton.textContent = "Termin anfragen";
           showError(`Die Anfrage konnte nicht gesendet werden. Rufen Sie uns gern an: ${dialog.dataset.phone}`);
