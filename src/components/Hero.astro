@@ -21,8 +21,12 @@ import { shop, hours } from "../data/shop";
         <span>{shop.address}</span>
       </p>
     </div>
-    <div class="photo-placeholder flex aspect-[4/3] items-end rounded-lg p-4">
-      <span class="text-xs uppercase tracking-widest text-muted">Photo · barber at work</span>
-    </div>
+    <img
+      src={shop.heroImage}
+      alt={`Inside ${shop.name}`}
+      width="800"
+      height="600"
+      class="aspect-[4/3] w-full rounded-lg object-cover"
+    />
   </div>
 </section>

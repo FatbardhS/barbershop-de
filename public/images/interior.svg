@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Illustration of the barbershop interior">
+  <defs>
+    <pattern id="floor" width="50" height="50" patternUnits="userSpaceOnUse">
+      <rect width="50" height="50" fill="#F6F1EA"/>
+      <rect width="25" height="25" fill="#3A332D"/>
+      <rect x="25" y="25" width="25" height="25" fill="#3A332D"/>
+    </pattern>
+    <pattern id="pole" width="30" height="30" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <rect width="30" height="30" fill="#F6F1EA"/>
+      <rect width="10" height="30" fill="#A8473A"/>
+      <rect x="15" width="6" height="30" fill="#3E5C76"/>
+    </pattern>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBF8F3"/>
+      <stop offset="1" stop-color="#E4D8C8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- wall, wainscot, floor -->
+  <rect width="800" height="430" fill="#EDE5DA"/>
+  <rect y="320" width="800" height="110" fill="#D9C8B0"/>
+  <rect y="316" width="800" height="6" fill="#B08A4E"/>
+  <g stroke="#C9B597" stroke-width="2">
+    <line x1="100" y1="330" x2="100" y2="430"/><line x1="260" y1="330" x2="260" y2="430"/>
+    <line x1="400" y1="330" x2="400" y2="430"/><line x1="540" y1="330" x2="540" y2="430"/>
+    <line x1="700" y1="330" x2="700" y2="430"/>
+  </g>
+  <rect y="430" width="800" height="170" fill="url(#floor)"/>
+  <rect y="430" width="800" height="6" fill="#2B2622" opacity=".25"/>
+
+  <!-- pendant lamps -->
+  <g>
+    <line x1="220" y1="0" x2="220" y2="38" stroke="#2B2622" stroke-width="2"/>
+    <path d="M196 62 Q220 30 244 62 Z" fill="#B08A4E"/>
+    <ellipse cx="220" cy="64" rx="8" ry="4" fill="#FFF4D6"/>
+    <line x1="580" y1="0" x2="580" y2="38" stroke="#2B2622" stroke-width="2"/>
+    <path d="M556 62 Q580 30 604 62 Z" fill="#B08A4E"/>
+    <ellipse cx="580" cy="64" rx="8" ry="4" fill="#FFF4D6"/>
+  </g>
+
+  <!-- mirrors -->
+  <g>
+    <path d="M120 190 A100 100 0 0 1 320 190 V310 H120 Z" fill="#B08A4E"/>
+    <path d="M132 190 A88 88 0 0 1 308 190 V298 H132 Z" fill="url(#glass)"/>
+    <path d="M160 260 L250 120 L272 132 L182 280 Z" fill="#FFFFFF" opacity=".45"/>
+    <path d="M480 190 A100 100 0 0 1 680 190 V310 H480 Z" fill="#B08A4E"/>
+    <path d="M492 190 A88 88 0 0 1 668 190 V298 H492 Z" fill="url(#glass)"/>
+    <path d="M520 260 L610 120 L632 132 L542 280 Z" fill="#FFFFFF" opacity=".45"/>
+  </g>
+
+  <!-- shelf with products and center counter -->
+  <g>
+    <rect x="340" y="190" width="120" height="6" fill="#2B2622"/>
+    <rect x="350" y="160" width="14" height="30" rx="3" fill="#3E5C76"/>
+    <rect x="370" y="150" width="12" height="40" rx="3" fill="#B08A4E"/>
+    <rect x="388" y="166" width="20" height="24" rx="4" fill="#2B2622"/>
+    <rect x="414" y="156" width="12" height="34" rx="3" fill="#A8473A"/>
+    <rect x="432" y="168" width="18" height="22" rx="4" fill="#6B625A"/>
+    <rect x="340" y="250" width="120" height="6" fill="#2B2622"/>
+    <circle cx="362" cy="238" r="12" fill="#F6F1EA" stroke="#2B2622" stroke-width="2"/>
+    <rect x="386" y="222" width="14" height="28" rx="3" fill="#B08A4E"/>
+    <rect x="408" y="230" width="40" height="20" rx="3" fill="#3A332D"/>
+    <rect x="330" y="330" width="140" height="100" rx="4" fill="#3A332D"/>
+    <rect x="330" y="326" width="140" height="10" rx="3" fill="#2B2622"/>
+    <rect x="345" y="355" width="50" height="6" rx="3" fill="#B08A4E"/>
+    <rect x="405" y="355" width="50" height="6" rx="3" fill="#B08A4E"/>
+  </g>
+
+  <!-- barber chairs -->
+  <g id="chair">
+    <ellipse cx="220" cy="560" rx="70" ry="14" fill="#2B2622" opacity=".25"/>
+    <ellipse cx="220" cy="552" rx="58" ry="12" fill="#8C8478"/>
+    <rect x="210" y="480" width="20" height="72" fill="#A79F92"/>
+    <rect x="166" y="466" width="108" height="20" rx="6" fill="#A79F92"/>
+    <rect x="150" y="420" width="140" height="52" rx="14" fill="#2B2622"/>
+    <rect x="162" y="320" width="116" height="112" rx="18" fill="#2B2622"/>
+    <rect x="176" y="334" width="88" height="84" rx="12" fill="#3A332D"/>
+    <rect x="190" y="290" width="60" height="26" rx="10" fill="#2B2622"/>
+    <rect x="212" y="312" width="16" height="12" fill="#A79F92"/>
+    <rect x="134" y="404" width="34" height="14" rx="7" fill="#B08A4E"/>
+    <rect x="272" y="404" width="34" height="14" rx="7" fill="#B08A4E"/>
+    <rect x="186" y="500" width="68" height="8" rx="4" fill="#A79F92"/>
+  </g>
+  <use href="#chair" x="360"/>
+
+  <!-- barber pole -->
+  <g>
+    <rect x="34" y="110" width="40" height="16" rx="6" fill="#B08A4E"/>
+    <rect x="40" y="126" width="28" height="160" fill="url(#pole)"/>
+    <rect x="40" y="126" width="8" height="160" fill="#FFFFFF" opacity=".3"/>
+    <rect x="34" y="286" width="40" height="16" rx="6" fill="#B08A4E"/>
+    <circle cx="54" cy="104" r="10" fill="#B08A4E"/>
+  </g>
+
+  <!-- plant -->
+  <g>
+    <path d="M745 330 C720 270 700 260 690 250 C720 255 740 280 752 320 Z" fill="#5E7A57"/>
+    <path d="M752 330 C750 260 765 230 780 215 C780 250 770 290 760 330 Z" fill="#6E8B65"/>
+    <path d="M758 330 C775 285 795 275 800 270 L800 300 C785 310 772 320 765 334 Z" fill="#5E7A57"/>
+    <path d="M730 330 H790 L780 425 H740 Z" fill="#B08A4E"/>
+  </g>
+
+  <!-- sign -->
+  <g>
+    <rect x="360" y="70" width="80" height="44" rx="4" fill="#2B2622"/>
+    <path d="M384 80 L416 104 M416 80 L384 104" stroke="#B08A4E" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

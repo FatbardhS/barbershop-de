@@ -9,9 +9,19 @@ import { gallery, shop } from "../data/shop";
       <a href={shop.instagram} class="text-sm font-semibold text-brass-dark hover:text-ink">Follow on Instagram →</a>
     </div>
     <ul class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-      {gallery.map((label) => (
-        <li class="photo-placeholder flex aspect-square items-end rounded-md p-3" style="background-color: var(--color-cream)">
-          <span class="text-[11px] uppercase tracking-widest text-muted">{label}</span>
+      {gallery.map((item) => (
+        <li class="relative overflow-hidden rounded-md">
+          <img
+            src={item.image}
+            alt={`${item.label} haircut`}
+            width="400"
+            height="400"
+            loading="lazy"
+            class="aspect-square w-full object-cover"
+          />
+          <span class="absolute bottom-2 left-2 rounded bg-cream/90 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-widest text-ink">
+            {item.label}
+          </span>
         </li>
       ))}
     </ul>

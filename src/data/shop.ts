@@ -12,8 +12,11 @@ export const shop = {
   instagram: "https://instagram.com/",
   // Link to the booking service page (Fresha, Booksy, Setmore, …)
   bookingUrl: "#",
-  // Google Maps "Embed a map" src URL; leave empty to show a placeholder
-  mapEmbedUrl: "",
+  // Google Maps embed. Swap the q= value for the shop's exact address,
+  // or paste the src from Google Maps > Share > Embed a map
+  mapEmbedUrl: "https://www.google.com/maps?q=Prishtina,+Kosovo&z=15&output=embed",
+  // Illustrations in public/images — replace with real photos (same name, .jpg) when ready
+  heroImage: "/images/interior.svg",
 };
 
 export const hours = [
@@ -32,12 +35,20 @@ export const services = [
 ];
 
 export const barbers = [
-  { name: "[Barber One]", role: "Owner · fades and classic cuts" },
-  { name: "[Barber Two]", role: "Beards and hot-towel shaves" },
-  { name: "[Barber Three]", role: "Textured cuts and styling" },
+  { name: "[Barber One]", role: "Owner · fades and classic cuts", image: "/images/barber-1.svg" },
+  { name: "[Barber Two]", role: "Beards and hot-towel shaves", image: "/images/barber-2.svg" },
+  { name: "[Barber Three]", role: "Textured cuts and styling", image: "/images/barber-3.svg" },
 ];
 
 export const gallery = [
-  "Fade", "Crop", "Beard", "Pompadour", "Buzz",
-  "Taper", "Shave", "Quiff", "Curls", "Line-up",
+  { label: "Fade", image: "/images/work-fade.svg" },
+  { label: "Crop", image: "/images/work-crop.svg" },
+  { label: "Beard", image: "/images/work-beard.svg" },
+  { label: "Pompadour", image: "/images/work-pompadour.svg" },
+  { label: "Buzz", image: "/images/work-buzz.svg" },
+  { label: "Taper", image: "/images/work-taper.svg" },
+  { label: "Shave", image: "/images/work-shave.svg" },
+  { label: "Quiff", image: "/images/work-quiff.svg" },
+  { label: "Curls", image: "/images/work-curls.svg" },
+  { label: "Line-up", image: "/images/work-lineup.svg" },
 ];
