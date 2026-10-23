@@ -5,17 +5,17 @@ import { url } from "../lib/url";
 export const shop = {
   name: "Leo Barbershop",
   established: "[Jahr]",
-  city: "[Stadt]",
+  city: "Berlin",
   tagline:
     "Klassisches Barbierhandwerk mit modernem Finish. Kommen Sie spontan für einen schnellen Schnitt vorbei oder buchen Sie Haarschnitt und Heißtuch-Rasur.",
-  address: "[Straße und Hausnummer]",
-  postcode: "[PLZ, Stadt]",
+  address: "Weitlingstraße 28",
+  postcode: "10317 Berlin",
   phone: "[Telefonnummer]",
   email: "[E-Mail-Adresse]",
   instagram: "https://instagram.com/",
   // Google Maps embed. Swap the q= value for the shop's exact address,
   // or paste the src from Google Maps > Share > Embed a map
-  mapEmbedUrl: "https://www.google.com/maps?q=Prishtina,+Kosovo&z=15&output=embed",
+  mapEmbedUrl: "https://www.google.com/maps?q=Weitlingstra%C3%9Fe+28,+10317+Berlin&z=16&output=embed",
   // Illustrations in public/images — replace with real photos (same name, .jpg) when ready
   heroImage: url("/images/interior.svg"),
 };
