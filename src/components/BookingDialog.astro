@@ -8,7 +8,7 @@ const anyBarber = "Egal";
 <dialog
   id="termin"
   aria-labelledby="termin-title"
-  class="m-0 h-dvh max-h-none w-full max-w-none overflow-hidden bg-cream p-0 text-ink backdrop:bg-ink/60 sm:m-auto sm:h-auto sm:max-h-[90dvh] sm:w-[32rem] sm:rounded-xl"
+  class="m-0 h-dvh max-h-none w-full max-w-none overflow-hidden bg-cream p-0 open:flex open:flex-col text-ink backdrop:bg-ink/60 sm:m-auto sm:h-fit sm:max-h-[90dvh] sm:w-[32rem] sm:rounded-xl"
   data-email={booking.email}
   data-phone={shop.phone}
   data-shop={shop.name}
@@ -16,14 +16,14 @@ const anyBarber = "Egal";
   data-slot-minutes={booking.slotMinutes}
   data-days-ahead={booking.daysAhead}
 >
-  <form class="flex h-full flex-col sm:max-h-[90dvh]" novalidate>
+  <form class="flex min-h-0 flex-auto flex-col" novalidate>
     <header class="flex items-center gap-3 border-b border-line px-5 py-4">
       <button type="button" data-back hidden class="text-xl leading-none hover:text-brass-dark" aria-label="Zurück">←</button>
       <h2 id="termin-title" class="flex-1 text-xl font-bold">Termin buchen</h2>
       <button type="button" data-close class="text-xl leading-none hover:text-brass-dark" aria-label="Schließen">✕</button>
     </header>
 
-    <div class="min-h-0 flex-1 overflow-y-auto px-5 py-6">
+    <div class="min-h-0 flex-auto overflow-y-auto px-5 py-6">
       <div data-step="choose" class="space-y-8">
         <fieldset class="min-w-0">
           <legend class="step-label">1 · Leistung</legend>
