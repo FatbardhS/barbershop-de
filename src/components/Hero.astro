@@ -6,24 +6,24 @@ import { shop, hours } from "../data/shop";
   <div class="container-page grid items-center gap-10 py-16 md:grid-cols-2 md:py-24">
     <div>
       <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brass-dark">
-        Est. {shop.established} · {shop.city}
+        Seit {shop.established} · {shop.city}
       </p>
       <h1 class="mt-4 text-5xl leading-[0.95] font-bold sm:text-6xl">
-        Sharp cuts.<br />Clean fades.<br />No rush.
+        Präzise Schnitte.<br />Saubere Fades.<br />Ohne Eile.
       </h1>
       <p class="mt-6 max-w-md text-muted">{shop.tagline}</p>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a href={shop.bookingUrl} class="btn-primary">Book an appointment</a>
-        <a href="#services" class="btn-outline">See prices</a>
+        <a href="#termin" data-booking class="btn-primary">Termin vereinbaren</a>
+        <a href="#services" class="btn-outline">Preise ansehen</a>
       </div>
       <p class="mt-6 flex flex-wrap gap-x-6 gap-y-1 text-sm text-muted">
-        <span>Open today · {hours[0].time}</span>
+        <span>Heute geöffnet · {hours[0].time}</span>
         <span>{shop.address}</span>
       </p>
     </div>
     <img
       src={shop.heroImage}
-      alt={`Inside ${shop.name}`}
+      alt={`Innenansicht von ${shop.name}`}
       width="800"
       height="600"
       class="aspect-[4/3] w-full rounded-lg object-cover"

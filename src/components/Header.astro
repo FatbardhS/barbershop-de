@@ -1,27 +1,25 @@
 ---
-import { shop } from "../data/shop";
+import { url } from "../lib/url";
+import Logo from "./Logo.astro";
 
 const links = [
-  { href: "#services", label: "Services" },
-  { href: "#barbers", label: "Barbers" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#visit", label: "Visit" },
+  { href: url("/#services"), label: "Leistungen" },
+  { href: url("/#barbers"), label: "Team" },
+  { href: url("/#gallery"), label: "Galerie" },
+  { href: url("/#visit"), label: "Anfahrt" },
 ];
 ---
 
 <header class="sticky top-0 z-50 border-b border-line bg-cream/90 backdrop-blur">
   <div class="container-page flex h-16 items-center justify-between gap-4">
-    <a href="#" class="flex items-center gap-2 font-display text-lg font-semibold uppercase">
-      <span class="text-brass" aria-hidden="true">✂</span>
-      {shop.name}
-    </a>
+    <Logo />
     <nav class="flex items-center gap-6">
       <ul class="hidden items-center gap-6 text-sm font-medium md:flex">
         {links.map((link) => (
           <li><a href={link.href} class="hover:text-brass-dark">{link.label}</a></li>
         ))}
       </ul>
-      <a href={shop.bookingUrl} class="btn-primary px-4 py-2">Book now</a>
+      <a href="#termin" data-booking class="btn-primary px-4 py-2">Termin buchen</a>
     </nav>
   </div>
 </header>

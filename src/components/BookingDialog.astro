@@ -1,0 +1,339 @@
+---
+import { shop, services, barbers, booking } from "../data/shop";
+import { url } from "../lib/url";
+
+const anyBarber = "Egal";
+---
+
+<dialog
+  id="termin"
+  aria-labelledby="termin-title"
+  class="m-0 h-dvh max-h-none w-full max-w-none overflow-hidden bg-cream p-0 text-ink backdrop:bg-ink/60 sm:m-auto sm:h-auto sm:max-h-[90dvh] sm:w-[32rem] sm:rounded-xl"
+  data-email={booking.email}
+  data-phone={shop.phone}
+  data-shop={shop.name}
+  data-hours={JSON.stringify(booking.openingHours)}
+  data-slot-minutes={booking.slotMinutes}
+  data-days-ahead={booking.daysAhead}
+>
+  <form class="flex h-full flex-col sm:max-h-[90dvh]" novalidate>
+    <header class="flex items-center gap-3 border-b border-line px-5 py-4">
+      <button type="button" data-back hidden class="text-xl leading-none hover:text-brass-dark" aria-label="Zurück">←</button>
+      <h2 id="termin-title" class="flex-1 text-xl font-bold">Termin buchen</h2>
+      <button type="button" data-close class="text-xl leading-none hover:text-brass-dark" aria-label="Schließen">✕</button>
+    </header>
+
+    <div class="min-h-0 flex-1 overflow-y-auto px-5 py-6">
+      <div data-step="choose" class="space-y-8">
+        <fieldset class="min-w-0">
+          <legend class="step-label">1 · Leistung</legend>
+          <div class="mt-3 grid gap-2">
+            {services.map((service, i) => (
+              <label class="option flex items-center justify-between gap-4 px-4 py-3">
+                <input type="radio" name="service" value={service.name} data-price={service.price} class="sr-only" checked={i === 0} />
+                <span>
+                  <span class="block font-semibold">{service.name}</span>
+                  <span class="text-xs text-muted">{service.duration} Min.</span>
+                </span>
+                <span class="font-display text-lg font-semibold text-brass-dark">{service.price}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset class="min-w-0">
+          <legend class="step-label">2 · Barbier</legend>
+          <div class="mt-3 grid grid-cols-4 gap-2">
+            <label class="option flex flex-col items-center gap-2 px-1 py-3 text-center">
+              <input type="radio" name="barber" value={anyBarber} class="sr-only" checked />
+              <span class="flex size-11 items-center justify-center rounded-full bg-sand font-display text-lg font-semibold text-brass-dark">?</span>
+              <span class="text-xs font-medium">Egal</span>
+            </label>
+            {barbers.map((barber) => (
+              <label class="option flex flex-col items-center gap-2 px-1 py-3 text-center">
+                <input type="radio" name="barber" value={barber.name} class="sr-only" />
+                <img src={barber.image} alt="" width="44" height="44" class="size-11 rounded-full object-cover" />
+                <span class="w-full truncate text-xs font-medium">{barber.name}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset class="min-w-0">
+          <legend class="step-label">3 · Tag</legend>
+          <div data-days class="-mx-5 mt-3 flex gap-2 overflow-x-auto px-5 pb-1"></div>
+        </fieldset>
+
+        <fieldset class="min-w-0">
+          <legend class="step-label">4 · Uhrzeit</legend>
+          <div data-slots class="mt-3 grid grid-cols-4 gap-2"></div>
+        </fieldset>
+      </div>
+
+      <div data-step="details" hidden class="space-y-6">
+        <div class="rounded-lg bg-sand px-4 py-3 text-sm">
+          <p class="step-label">Ihr Termin</p>
+          <p data-summary class="mt-2 font-medium"></p>
+        </div>
+        <label class="block">
+          <span class="text-sm font-semibold">Name</span>
+          <input type="text" name="name" autocomplete="name" placeholder="Max Mustermann" class="field" />
+          <span data-error-for="name" hidden class="mt-1 block text-sm text-red-700">Geben Sie Ihren Namen ein.</span>
+        </label>
+        <label class="block">
+          <span class="text-sm font-semibold">Telefonnummer</span>
+          <input type="tel" name="phone" autocomplete="tel" placeholder="0151 23456789" class="field" />
+          <span data-error-for="phone" hidden class="mt-1 block text-sm text-red-700">Geben Sie eine gültige Telefonnummer ein.</span>
+        </label>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+        <p class="text-xs text-muted">
+          Wir nutzen Ihre Angaben nur, um Ihren Termin zu bestätigen. Mehr in der
+          <a href={url("/datenschutz")} class="text-brass-dark underline hover:text-ink">Datenschutzerklärung</a>.
+        </p>
+      </div>
+
+      <div data-step="done" hidden class="py-10 text-center">
+        <div class="mx-auto flex size-14 items-center justify-center rounded-full bg-brass text-2xl text-white">✓</div>
+        <h3 class="mt-5 text-2xl font-bold">Anfrage gesendet</h3>
+        <p class="mx-auto mt-2 max-w-xs text-muted">
+          Danke! Wir melden uns telefonisch bei Ihnen, um den Termin zu bestätigen.
+        </p>
+        <p data-summary class="mt-4 text-sm font-medium"></p>
+      </div>
+    </div>
+
+    <footer class="border-t border-line px-5 py-4">
+      <p data-error hidden class="mb-3 text-sm text-red-700"></p>
+      <div data-footer-info class="mb-3 flex items-center justify-between gap-4 text-sm">
+        <span data-footer-summary class="text-muted"></span>
+        <span data-footer-price class="font-display text-lg font-semibold text-brass-dark"></span>
+      </div>
+      <button type="submit" data-submit class="btn-primary w-full disabled:cursor-wait disabled:opacity-60">Weiter</button>
+    </footer>
+  </form>
+</dialog>
+
+<script>
+  const dialog = document.getElementById("termin") as HTMLDialogElement | null;
+
+  if (dialog) {
+    const form = dialog.querySelector("form")!;
+    const daysBox = dialog.querySelector<HTMLElement>("[data-days]")!;
+    const slotsBox = dialog.querySelector<HTMLElement>("[data-slots]")!;
+    const steps = {
+      choose: dialog.querySelector<HTMLElement>('[data-step="choose"]')!,
+      details: dialog.querySelector<HTMLElement>('[data-step="details"]')!,
+      done: dialog.querySelector<HTMLElement>('[data-step="done"]')!,
+    };
+    const backButton = dialog.querySelector<HTMLButtonElement>("[data-back]")!;
+    const submitButton = dialog.querySelector<HTMLButtonElement>("[data-submit]")!;
+    const errorBox = dialog.querySelector<HTMLElement>("[data-error]")!;
+    const footerInfo = dialog.querySelector<HTMLElement>("[data-footer-info]")!;
+    const footerSummary = dialog.querySelector<HTMLElement>("[data-footer-summary]")!;
+    const footerPrice = dialog.querySelector<HTMLElement>("[data-footer-price]")!;
+
+    const openingHours: ([string, string] | null)[] = JSON.parse(dialog.dataset.hours ?? "[]");
+    const slotMinutes = Number(dialog.dataset.slotMinutes);
+    const daysAhead = Number(dialog.dataset.daysAhead);
+
+    const pad = (n: number) => String(n).padStart(2, "0");
+    const toMinutes = (time: string) => {
+      const [h, m] = time.split(":").map(Number);
+      return h * 60 + m;
+    };
+    const isoDate = (d: Date) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+    const fromIso = (iso: string) => {
+      const [y, m, d] = iso.split("-").map(Number);
+      return new Date(y, m - 1, d);
+    };
+    const weekdayShort = new Intl.DateTimeFormat("de-DE", { weekday: "short" });
+    const dateShort = new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "numeric", month: "short" });
+    const dateLong = new Intl.DateTimeFormat("de-DE", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+
+    const value = (name: string) => (form.elements.namedItem(name) as RadioNodeList | HTMLInputElement | null)?.value ?? "";
+
+    function slotsFor(day: Date) {
+      const open = openingHours[day.getDay()];
+      if (!open) return [];
+      const now = Date.now();
+      const slots: { time: string; past: boolean }[] = [];
+      for (let m = toMinutes(open[0]); m + slotMinutes <= toMinutes(open[1]); m += slotMinutes) {
+        const start = new Date(day);
+        start.setHours(Math.floor(m / 60), m % 60, 0, 0);
+        slots.push({ time: `${pad(start.getHours())}:${pad(start.getMinutes())}`, past: start.getTime() <= now });
+      }
+      return slots;
+    }
+
+    function renderDays() {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      let html = "";
+      let first = true;
+      for (let i = 0; i < daysAhead; i++) {
+        const day = new Date(today);
+        day.setDate(today.getDate() + i);
+        const slots = slotsFor(day);
+        if (!slots.some((slot) => !slot.past)) continue;
+        html += `<label class="option flex w-16 shrink-0 flex-col items-center py-2">
+          <input type="radio" name="day" value="${isoDate(day)}" class="sr-only" ${first ? "checked" : ""} />
+          <span class="text-[11px] font-semibold uppercase">${weekdayShort.format(day).replace(".", "")}</span>
+          <span class="font-display text-2xl font-semibold">${day.getDate()}</span>
+        </label>`;
+        first = false;
+      }
+      daysBox.innerHTML = html;
+    }
+
+    function renderSlots() {
+      const iso = value("day");
+      const slots = iso ? slotsFor(fromIso(iso)) : [];
+      slotsBox.innerHTML = slots
+        .map(
+          (slot) => `<label class="option py-2.5 text-center text-sm font-semibold">
+            <input type="radio" name="time" value="${slot.time}" class="sr-only" ${slot.past ? "disabled" : ""} />
+            ${slot.time}
+          </label>`,
+        )
+        .join("");
+    }
+
+    function summary() {
+      const iso = value("day");
+      const barber = value("barber");
+      const parts = [value("service"), barber === "Egal" ? "beliebiger Barbier" : `bei ${barber}`];
+      const when = iso ? `${dateShort.format(fromIso(iso))}${value("time") ? `, ${value("time")} Uhr` : ""}` : "";
+      return { line: `${parts.join(" ")} · ${when}`, when };
+    }
+
+    function updateFooter() {
+      const service = form.querySelector<HTMLInputElement>('input[name="service"]:checked');
+      footerSummary.textContent = `${value("service")} · ${summary().when}`;
+      footerPrice.textContent = service?.dataset.price ?? "";
+    }
+
+    function showStep(step: keyof typeof steps) {
+      for (const [name, el] of Object.entries(steps)) el.hidden = name !== step;
+      backButton.hidden = step !== "details";
+      footerInfo.hidden = step === "done";
+      submitButton.disabled = false;
+      submitButton.textContent = { choose: "Weiter", details: "Termin anfragen", done: "Schließen" }[step];
+      errorBox.hidden = true;
+      dialog!.querySelectorAll<HTMLElement>("[data-summary]").forEach((el) => (el.textContent = summary().line));
+      form.querySelector(".overflow-y-auto")?.scrollTo(0, 0);
+      currentStep = step;
+    }
+
+    function showError(message: string) {
+      errorBox.textContent = message;
+      errorBox.hidden = false;
+    }
+
+    function fieldError(name: string, show: boolean) {
+      dialog!.querySelector<HTMLElement>(`[data-error-for="${name}"]`)!.hidden = !show;
+    }
+
+    let currentStep: keyof typeof steps = "choose";
+
+    function open(barber?: string) {
+      form.reset();
+      renderDays();
+      renderSlots();
+      if (barber) {
+        const input = form.querySelector<HTMLInputElement>(`input[name="barber"][value="${CSS.escape(barber)}"]`);
+        if (input) input.checked = true;
+      }
+      fieldError("name", false);
+      fieldError("phone", false);
+      showStep("choose");
+      updateFooter();
+      if (!dialog!.open) dialog!.showModal();
+    }
+
+    document.querySelectorAll<HTMLElement>("[data-booking]").forEach((trigger) => {
+      trigger.addEventListener("click", (event) => {
+        event.preventDefault();
+        open(trigger.dataset.barber);
+      });
+    });
+
+    form.addEventListener("change", (event) => {
+      const target = event.target as HTMLInputElement;
+      if (target.name === "day") renderSlots();
+      if (target.name === "time") errorBox.hidden = true;
+      if (target.name === "name" || target.name === "phone") fieldError(target.name, false);
+      updateFooter();
+    });
+
+    form.addEventListener("input", (event) => {
+      const target = event.target as HTMLInputElement;
+      if (target.name === "name" || target.name === "phone") fieldError(target.name, false);
+    });
+
+    backButton.addEventListener("click", () => showStep("choose"));
+    dialog.querySelector("[data-close]")!.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (currentStep === "done") {
+        dialog.close();
+        return;
+      }
+
+      if (currentStep === "choose") {
+        if (!value("time")) {
+          showError("Wählen Sie eine Uhrzeit aus.");
+          return;
+        }
+        showStep("details");
+        return;
+      }
+
+      const name = value("name").trim();
+      const phone = value("phone").trim();
+      const nameOk = name.length >= 2;
+      const phoneOk = phone.replace(/\D/g, "").length >= 6;
+      fieldError("name", !nameOk);
+      fieldError("phone", !phoneOk);
+      if (!nameOk || !phoneOk) return;
+
+      const iso = value("day");
+      const date = dateLong.format(fromIso(iso));
+      submitButton.disabled = true;
+      submitButton.textContent = "Wird gesendet…";
+      errorBox.hidden = true;
+
+      try {
+        const response = await fetch(`https://formsubmit.co/ajax/${dialog.dataset.email}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            _subject: `Neue Terminanfrage: ${name}, ${date}, ${value("time")} Uhr`,
+            _template: "table",
+            _honey: value("_honey"),
+            Name: name,
+            Telefon: phone,
+            Leistung: value("service"),
+            Barbier: value("barber"),
+            Datum: date,
+            Uhrzeit: `${value("time")} Uhr`,
+          }),
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || String(result.success) !== "true") throw new Error(result.message);
+        showStep("done");
+      } catch (error) {
+        console.warn("Terminanfrage fehlgeschlagen:", error);
+        submitButton.disabled = false;
+        submitButton.textContent = "Termin anfragen";
+        showError(`Die Anfrage konnte nicht gesendet werden. Rufen Sie uns gern an: ${dialog.dataset.phone}`);
+      }
+    });
+
+    if (location.hash === "#termin") open();
+  }
+</script>

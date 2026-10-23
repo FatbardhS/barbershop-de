@@ -1,0 +1,54 @@
+---
+import LegalPage from "../layouts/LegalPage.astro";
+import { shop, legal } from "../data/shop";
+---
+
+<LegalPage title="Impressum">
+  <h2>Angaben gemäß § 5 DDG</h2>
+  <p>
+    {shop.name}<br />
+    Inhaber: {legal.owner}<br />
+    {shop.address}<br />
+    {shop.postcode}
+  </p>
+  <p>Rechtsform: {legal.legalForm}</p>
+
+  <h2>Kontakt</h2>
+  <p>
+    Telefon: {shop.phone}<br />
+    E-Mail: {shop.email}
+  </p>
+
+  <h2>Umsatzsteuer-ID</h2>
+  <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz: {legal.vatId}</p>
+
+  <h2>Berufsrechtliche Angaben</h2>
+  <p>
+    Berufsbezeichnung: {legal.masterTitle}<br />
+    Zuständige Kammer: {legal.chamber}<br />
+    {legal.craftRegister}
+  </p>
+  <p>
+    Es gelten die Handwerksordnung (HwO) und die Satzungen der zuständigen Handwerkskammer, einsehbar unter
+    <a href="https://www.gesetze-im-internet.de/hwo/">gesetze-im-internet.de/hwo</a>.
+  </p>
+
+  <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+  <p>
+    {legal.owner}<br />
+    {shop.address}, {shop.postcode}
+  </p>
+
+  <h2>Verbraucherstreitbeilegung</h2>
+  <p>
+    Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer
+    Verbraucherschlichtungsstelle teilzunehmen.
+  </p>
+
+  <h2>Haftung für Links</h2>
+  <p>
+    Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die
+    Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich. Bei Bekanntwerden
+    von Rechtsverletzungen entfernen wir derartige Links umgehend.
+  </p>
+</LegalPage>

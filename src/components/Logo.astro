@@ -1,0 +1,17 @@
+---
+import { url } from "../lib/url";
+
+interface Props {
+  inverted?: boolean;
+}
+
+const { inverted = false } = Astro.props;
+---
+
+<a href={url("/")} class="flex items-center gap-2.5" aria-label="Leo Barbershop, zur Startseite">
+  <img src={url("/logo-mark.svg")} alt="" width="40" height="40" class="size-10" />
+  <span class="flex flex-col font-display uppercase leading-none">
+    <span class:list={["text-2xl font-bold tracking-wide", inverted ? "text-cream" : "text-ink"]}>Leo</span>
+    <span class="mt-0.5 text-[10px] font-semibold tracking-[0.3em] text-brass">Barbershop</span>
+  </span>
+</a>

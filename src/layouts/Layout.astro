@@ -1,6 +1,14 @@
 ---
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/oswald/500.css";
+import "@fontsource/oswald/600.css";
+import "@fontsource/oswald/700.css";
 import "../styles/global.css";
+import BookingDialog from "../components/BookingDialog.astro";
 import { shop } from "../data/shop";
+import { url } from "../lib/url";
 
 interface Props {
   title?: string;
@@ -8,27 +16,22 @@ interface Props {
 }
 
 const {
-  title = `${shop.name} · Barbershop in ${shop.city}`,
+  title = `${shop.name} · Barbier in ${shop.city}`,
   description = shop.tagline,
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="icon" type="image/svg+xml" href={url("/logo-mark.svg")} />
     <title>{title}</title>
   </head>
   <body>
     <slot />
+    <BookingDialog />
   </body>
 </html>

@@ -5,7 +5,7 @@ import { shop, hours } from "../data/shop";
 <section id="visit" class="scroll-mt-16">
   <div class="container-page grid gap-10 py-16 md:grid-cols-2 md:py-20">
     <div>
-      <h2 class="text-3xl font-bold sm:text-4xl">Visit us</h2>
+      <h2 class="text-3xl font-bold sm:text-4xl">Besuchen Sie uns</h2>
       <address class="mt-6 not-italic text-muted">
         {shop.address}<br />
         {shop.postcode}<br />
@@ -19,18 +19,18 @@ import { shop, hours } from "../data/shop";
           </div>
         ))}
       </dl>
-      <a href={shop.bookingUrl} class="btn-primary mt-8">Book now</a>
+      <a href="#termin" data-booking class="btn-primary mt-8">Termin buchen</a>
     </div>
     {shop.mapEmbedUrl ? (
       <iframe
         src={shop.mapEmbedUrl}
         class="aspect-[4/3] w-full rounded-lg border-0"
         loading="lazy"
-        title={`Map to ${shop.name}`}
+        title={`Karte: So finden Sie ${shop.name}`}
       ></iframe>
     ) : (
       <div class="photo-placeholder flex aspect-[4/3] items-end rounded-lg p-4">
-        <span class="text-xs uppercase tracking-widest text-muted">Map</span>
+        <span class="text-xs uppercase tracking-widest text-muted">Karte</span>
       </div>
     )}
   </div>

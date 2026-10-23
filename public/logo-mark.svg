@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Leo Barbershop">
+  <g fill="#B08A4E">
+    <circle cx="32" cy="32" r="25"/>
+    <circle cx="32.0" cy="8.0" r="7.5"/><circle cx="42.4" cy="10.4" r="7.5"/><circle cx="50.8" cy="17.0" r="7.5"/>
+    <circle cx="55.4" cy="26.7" r="7.5"/><circle cx="55.4" cy="37.3" r="7.5"/><circle cx="50.8" cy="47.0" r="7.5"/>
+    <circle cx="42.4" cy="53.6" r="7.5"/><circle cx="32.0" cy="56.0" r="7.5"/><circle cx="21.6" cy="53.6" r="7.5"/>
+    <circle cx="13.2" cy="47.0" r="7.5"/><circle cx="8.6" cy="37.3" r="7.5"/><circle cx="8.6" cy="26.7" r="7.5"/>
+    <circle cx="13.2" cy="17.0" r="7.5"/><circle cx="21.6" cy="10.4" r="7.5"/>
+  </g>
+  <circle cx="21.5" cy="17.5" r="3.6" fill="#2B2622"/>
+  <circle cx="42.5" cy="17.5" r="3.6" fill="#2B2622"/>
+  <path d="M32 15C41 15 46.5 20 46.5 27.5C46.5 37 39 46.5 32 50.5C25 46.5 17.5 37 17.5 27.5C17.5 20 23 15 32 15Z" fill="#2B2622"/>
+  <path d="M32 21V33" stroke="#B08A4E" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M23.5 29.5Q26 27.5 28.5 29.5Q26 31 23.5 29.5ZM35.5 29.5Q38 27.5 40.5 29.5Q38 31 35.5 29.5Z" fill="#F6F1EA"/>
+  <circle cx="28.3" cy="41.3" r="4.3" fill="#F6F1EA"/>
+  <circle cx="35.7" cy="41.3" r="4.3" fill="#F6F1EA"/>
+  <path d="M29 46Q32 48.5 35 46Q34 49.5 32 49.5Q30 49.5 29 46Z" fill="#F6F1EA"/>
+  <path d="M28.6 35.6H35.4L32 39.8Z" fill="#2B2622" stroke="#2B2622" stroke-width="1" stroke-linejoin="round"/>
+</svg>
