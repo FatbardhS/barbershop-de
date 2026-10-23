@@ -30,6 +30,7 @@ export const legal = {
   masterTitle: "[Berufsbezeichnung, z. B. Friseurmeister, verliehen in Deutschland]",
   hosting: "[Name und Anschrift des Hosting-Anbieters, z. B. Netlify Inc.]",
   formProvider: "[Anbieter und Anschrift von FormSubmit laut formsubmit.co]",
+  databaseProvider: "[Supabase Inc., Anschrift laut supabase.com; Serverstandort, z. B. Frankfurt (EU)]",
   supervisoryAuthority: "[Datenschutz-Aufsichtsbehörde des Bundeslandes]",
   lastUpdated: "[Monat Jahr]",
 };
@@ -45,6 +46,12 @@ export const hours = [
 // from FormSubmit to that address, which has to be confirmed once.
 export const booking = {
   email: "06bs0280@gmail.com",
+  // Supabase project that stores bookings so a taken slot can't be booked twice.
+  // Set up with supabase/booking.sql, then paste the values from
+  // Supabase > Project Settings > API. The anon key is meant to be public.
+  // While these are empty, slots aren't blocked and requests are only emailed.
+  supabaseUrl: "https://vltafpngbwvnfpmwpzws.supabase.co",
+  supabaseAnonKey: "sb_publishable_zGJJ-0Y_ZA1M88t_DU68Rw_3Nd-3L6D",
   slotMinutes: 30,
   daysAhead: 14,
   // Opening times per weekday for the time slots, starting with Sunday; null = closed.

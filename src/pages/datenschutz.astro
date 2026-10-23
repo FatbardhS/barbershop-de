@@ -49,8 +49,13 @@ import { shop, legal } from "../data/shop";
   <h2>6. Online-Terminanfrage</h2>
   <p>
     Über das Formular „Termin buchen“ können Sie einen Termin anfragen. Dabei verarbeiten wir die gewählte Leistung,
-    den Barbier, Datum und Uhrzeit sowie Ihren Namen und Ihre Telefonnummer. Die Angaben werden über den Dienst
-    FormSubmit ({legal.formProvider}) per E-Mail an uns übermittelt.
+    den Barbier, Datum und Uhrzeit sowie Ihren Namen und Ihre Telefonnummer.
+  </p>
+  <p>
+    Damit ein Termin nicht doppelt vergeben wird, speichern wir die Buchung in einer Datenbank bei Supabase
+    ({legal.databaseProvider}). Andere Besucher sehen dabei nur, welche Uhrzeiten belegt sind, nicht Ihren Namen oder
+    Ihre Telefonnummer. Zusätzlich werden die Angaben über den Dienst FormSubmit ({legal.formProvider}) per E-Mail an
+    uns übermittelt.
   </p>
   <p>
     Wir nutzen die Daten ausschließlich, um Ihren Termin zu bestätigen und durchzuführen. Rechtsgrundlage ist
